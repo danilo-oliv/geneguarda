@@ -32,6 +32,17 @@ class AnimalController extends Controller
         //
     }
 
+    public function showAll(){
+        echo Animal::all();
+    }
+
+    public function getByProprietario($id_proprietario){
+        //var_dump($id_proprietario);
+        $animais = Animal::where('id_proprietario','=', intval($id_proprietario))->get();
+        //var_dump($animais);
+        return response()->json($animais);
+    }
+
     /**
      * Update the specified resource in storage.
      */

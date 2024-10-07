@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Receptora extends Model
 {
     use HasFactory;
+
+    public function Animal() {
+        return $this->belongsTo(Animal::class);
+    }
 }
