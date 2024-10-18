@@ -21,7 +21,7 @@ class ProprietarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Proprietario::create($request->all());
     }
 
     /**
@@ -30,6 +30,11 @@ class ProprietarioController extends Controller
     public function show(Proprietario $proprietario)
     {
         //
+    }
+
+    public function showAll(){
+        $response = Proprietario::all();
+        return response()->json($response);
     }
 
     /**
