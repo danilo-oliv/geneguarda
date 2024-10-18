@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AnimalController extends Controller
 {
@@ -21,7 +22,9 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Animal::create($request->all());
+        //$animal->save();
+
     }
 
     /**
@@ -33,7 +36,8 @@ class AnimalController extends Controller
     }
 
     public function showAll(){
-        echo Animal::all();
+        $response = Animal::all();
+        return response()->json($response);
     }
 
     public function getByProprietario($id_proprietario){
@@ -54,8 +58,9 @@ class AnimalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Animal $animal)
+    public function destroy($animalID)
     {
-        //
+        $animal = Animal::findOrFail($animalID);
+        $animal->delete();
     }
 }

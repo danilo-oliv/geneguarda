@@ -26,7 +26,7 @@ CREATE TABLE Sexo (
 
 
 CREATE TABLE Veterinario (
-                cod_vet SMALLINT NOT NULL,
+                cod_vet SMALLINT NOT NULL AUTO_INCREMENT,
                 CRMV INT NOT NULL,
                 DDD TINYINT NOT NULL,
                 numero_telefone INT NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE Fazenda (
 
 
 CREATE TABLE Animal (
-                id_animal INT NOT NULL,
+                id_animal INT NOT NULL AUTO_INCREMENT,
                 brinco VARCHAR(8) NOT NULL,
                 nome VARCHAR(50),
                 peso SMALLINT,
@@ -79,7 +79,7 @@ CREATE TABLE Procedimento (
 
 
 CREATE TABLE Embriao (
-                cod_embriao INT NOT NULL,
+                cod_embriao INT NOT NULL AUTO_INCREMENT,
                 id_macho INT NOT NULL,
                 id_femea INT NOT NULL,
                 data_fecundacao DATE NOT NULL,

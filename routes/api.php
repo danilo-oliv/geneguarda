@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AnimalController;
-
+use App\Http\Controllers\ProprietarioController;
+use App\Models\Proprietario;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/animal', [AnimalController::class, 'showAll']);
 
 Route::get('/animal/proprietario/{id}', [AnimalController::class, 'getByProprietario']);
+
+Route::post('/animal', [AnimalController::class, 'store']);
+
+Route::get('/proprietario', [ProprietarioController::class, 'showAll']);
+
+Route::post('/proprietario', [ProprietarioController::class,'store']);
