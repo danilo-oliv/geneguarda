@@ -47,6 +47,16 @@ class AnimalController extends Controller
         return response()->json($animais);
     }
 
+    public function getDoadoras($id_proprietario){
+        $doadoras = Animal::where('sexo', '=', 'f')->where('id_proprietario','=', intval($id_proprietario))->get();
+        return response()->json($doadoras);
+    }
+
+    public function getDoadores($id_proprietario){
+        $doadores = Animal::where('sexo', '=', 'm')->where('id_proprietario','=', intval($id_proprietario))->get();
+        return response()->json($doadores);
+    }
+
     /**
      * Update the specified resource in storage.
      */
