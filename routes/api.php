@@ -37,6 +37,11 @@ Route::get('/animal/proprietario/{id}', [AnimalController::class, 'getByPropriet
 
 Route::post('/animal', [AnimalController::class, 'store']);
 
+Route::get('/animal/doadoras/{id}', [AnimalController::class, 'getDoadoras']);
+
+Route::get('/animal/doadores/{id}', [AnimalController::class, 'getDoadores']);
+
+
 Route::get('/proprietario', [ProprietarioController::class, 'showAll']);
 
 Route::post('/proprietario', [ProprietarioController::class,'store']);
