@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ProprietarioController;
+use App\Models\MaterialDoador;
+use App\Models\MaterialDoadora;
 use App\Models\Proprietario;
 
 /*
@@ -45,3 +47,10 @@ Route::get('/animal/doadores/{id}', [AnimalController::class, 'getDoadores']);
 Route::get('/proprietario', [ProprietarioController::class, 'showAll']);
 
 Route::post('/proprietario', [ProprietarioController::class,'store']);
+
+
+Route::get('/doador', [MaterialDoador::class, 'getAll']);
+Route::get('/doador/{id}', [MaterialDoador::class, 'getDoadorByID']);
+
+Route::get('/doadora', [MaterialDoadora::class, 'getAll']);
+Route::get('/doadora/{id}', [MaterialDoadora::class, 'getDoadorByID']);
