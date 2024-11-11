@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class MaterialDoadora extends Model
 {
     use HasFactory;
-    public function doador() : HasOne {
+    public function doadora() : HasOne {
         return $this->hasOne(Animal::class);
     }
 }
