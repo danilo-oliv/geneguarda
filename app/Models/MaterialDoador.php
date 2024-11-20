@@ -10,6 +10,11 @@ class MaterialDoador extends Model
 {
     use HasFactory;
 
+    protected $table = 'materialdoador';
+    protected $guarded = [];
+    protected $primaryKey = 'idmaterial';
+    public $timestamps = false;
+
     public function doador() : HasOne {
         return $this->hasOne(Animal::class);
     }

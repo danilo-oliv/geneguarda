@@ -17,4 +17,11 @@ class MaterialDoadorController extends Controller
         $response = MaterialDoador::where('id_animal', '=', $id_doador);
         return response()->json($response);
     }
+
+    public function store(Request $request) {
+        MaterialDoador::create([
+            'quantidade' => $request->quantidade,
+            'id_animal' => $request->id_animal
+        ]);
+    }
 }
