@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\MaterialDoadorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\EmbriaoController;
+use App\Http\Controllers\MaterialDoadoraController;
 use App\Http\Controllers\ProprietarioController;
 use App\Models\MaterialDoador;
 use App\Models\MaterialDoadora;
@@ -30,27 +33,51 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+/** ANIMAL */
 
-
- 
+#Lista todos animais
 Route::get('/animal', [AnimalController::class, 'showAll']);
-
+#Lista animais por proprietario
 Route::get('/animal/proprietario/{id}', [AnimalController::class, 'getByProprietario']);
-
+#Lista doadoras por id do proprietario
+Route::get('/animal/doadoras/{id}', [AnimalController::class, 'getDoadoras']);
+#Lista doadores por id do proprietario
+Route::get('/animal/doadores/{id}', [AnimalController::class, 'getDoadores']);
+#Grava um animal, conferir params via get
 Route::post('/animal', [AnimalController::class, 'store']);
 
-Route::get('/animal/doadoras/{id}', [AnimalController::class, 'getDoadoras']);
+/** PROPRIETARIO */
 
-Route::get('/animal/doadores/{id}', [AnimalController::class, 'getDoadores']);
-
-
+#Lista todos proprietarios
 Route::get('/proprietario', [ProprietarioController::class, 'showAll']);
-
+#Grava yum proprietario, conferir params via get
 Route::post('/proprietario', [ProprietarioController::class,'store']);
 
 
-Route::get('/doador', [MaterialDoador::class, 'getAll']);
-Route::get('/doador/{id}', [MaterialDoador::class, 'getDoadorByID']);
+/** MATERIAL GENETICO */
 
-Route::get('/doadora', [MaterialDoadora::class, 'getAll']);
-Route::get('/doadora/{id}', [MaterialDoadora::class, 'getDoadorByID']);
+/** macho */
+
+#Lista todos os materiais (semen)
+Route::get('/doador', [MaterialDoadorController::class, 'getAll']);
+#Lista materiais por id do animal macho
+Route::get('/doador/{id}', [MaterialDoadorController::class, 'getDoadorByID']);
+#Grava uma coleta de material (macho)
+Route::post('/materialdoador', [MaterialDoadorController::class, 'store']);
+
+/** femea */
+
+#Lista todos os materiais (oocitos)
+Route::get('/doadora', [MaterialDoadoraController::class, 'getAll']);
+#Lista materiais por id do animal femea
+Route::get('/doadora/{id}', [MaterialDoadoraController::class, 'getDoadorByID']);
+#Grava uma coleta de material (femea)
+Route::post('/materialdoadora', [MaterialDoadoraController::class, 'store']);
+
+/** EMBRIAO */
+#Lista todos embrioes
+Route::get('/embriao', [EmbriaoController::class, 'getAll']);
+#Lista embrioes por proprietario
+Route::get('/embriao/proprietario/{id}', [EmbriaoController::class, 'showByProprietario']);
+#Grava um embriao
+Route::post('/embriao', [EmbriaoController::class, 'store']);
