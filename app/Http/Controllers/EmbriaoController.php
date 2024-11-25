@@ -52,9 +52,12 @@ class EmbriaoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Embriao $embriao)
+    public function update(Request $request, $id)
     {
-        //
+        Embriao::find($id)->update([
+            "data_congelamento" => $request->data_congelamento,
+            "data_descongelamento" => $request->data_descongelamento
+        ]);
     }
 
     /**
