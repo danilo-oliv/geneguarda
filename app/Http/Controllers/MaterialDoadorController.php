@@ -14,7 +14,8 @@ class MaterialDoadorController extends Controller
     }
 
     public function getDoadorByID($id_doador) {
-        $response = MaterialDoador::where('id_animal', '=', $id_doador);
+        $response = MaterialDoador::where('id_animal', '=', $id_doador)->get();
+        
         return response()->json($response);
     }
 

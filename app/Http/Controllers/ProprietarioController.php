@@ -52,4 +52,23 @@ class ProprietarioController extends Controller
     {
         //
     }
+
+    public function login(Request $request) {
+
+        // Busca o proprietário com base no email e senha diretamente
+        $proprietario = Proprietario::where('email', $request->email)
+            ->where('senha', $request->senha)
+            ->first();
+
+        // Verifica se encontrou um proprietário
+        if (!$proprietario) {
+            return response()->json(['message' => 'Email ou senha inválidos.'], 401);
+        }
+
+        // Retorna uma mensagem de sucesso
+        return response()->json([
+            'message' => 'Autenticação bem-sucedida.',
+            'proprietario' => $proprietario,
+        ]);
+    }
 }
