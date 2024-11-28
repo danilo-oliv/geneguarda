@@ -13,4 +13,6 @@ class Raca extends Model
     protected $table = 'raca';
     protected $primaryKey = 'cod_raca';
     public $timestamps = false;
+    protected $keyType = 'string'; // Tipo da chave primária
+    public $incrementing = false; // Desativa auto-incremento
 }
